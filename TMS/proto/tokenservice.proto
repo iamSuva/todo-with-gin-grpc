@@ -1,0 +1,23 @@
+syntax="proto3";
+
+option go_package="./proto";
+
+service TokenService{
+  rpc  GetToken(TokenRequest) returns (TokenResponse);
+  rpc VerifyToken(VerifyRequest) returns (VerifedTokenResponse);
+};
+
+message TokenRequest{
+   int64 userId=1;
+   string username=2;
+}
+message TokenResponse{
+   string jwtToken=1;
+}
+message VerifyRequest{
+    string jwtToken=1;
+}
+message VerifedTokenResponse{
+    string username=1;
+    int64 userId=2;
+}
